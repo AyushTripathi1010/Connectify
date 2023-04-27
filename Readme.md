@@ -41,7 +41,3 @@ Connectify is built with the following technologies:
 ## Contributing
 
 Contributions to Connectify are welcome! If you would like to contribute, please fork this repository and submit a pull request with your changes.
-
-## License
-
-Connectify is released under the [MIT License](https://opensource.org/licenses/MIT).
