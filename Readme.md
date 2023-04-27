@@ -1,4 +1,4 @@
-Sure, here's an updated README.md file that includes the process to start the backend server:
+
 
 # Connectify
 
@@ -8,7 +8,7 @@ Connectify is a social media application built with React that allows users to c
 
 To install and run Connectify on your local machine, follow these steps:
 
-1. Clone this repository to your local machine: `git clone https://github.com/<your_username>/Connectify.git`
+1. Clone this repository to your local machine: `https://github.com/AyushTripathi1010/Connectify.git`
 2. Navigate to the project directory: `cd Connectify`
 3. Install the necessary dependencies: `npm install`
 4. Create a new MongoDB Atlas cluster and database
