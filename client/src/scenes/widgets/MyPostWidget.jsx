@@ -158,9 +158,12 @@ const MyPostWidget = ({ picturePath }) => {
           disabled={!post}
           onClick={handlePost}
           sx={{
-            color: palette.background.alt,
-            backgroundColor: palette.primary.main,
+            // color: palette.background.alt,
+            color: 'black',
+            backgroundColor: 'rgba(144, 238, 144, 0.8)',   
+            // backgroundColor: palette.primary.main,
             borderRadius: "3rem",
+            "&:hover": { cursor: "pointer",backgroundColor: 'rgba(144, 238, 144, 0.6)'  }
           }}
         >
           POST

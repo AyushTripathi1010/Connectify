@@ -46,6 +46,8 @@ export const getUserPosts = async (req, res) => {
   }
 };
 
+
+
 /* UPDATE */
 export const likePost = async (req, res) => {
   try {
@@ -54,12 +56,14 @@ export const likePost = async (req, res) => {
     const post = await Post.findById(id);
     const isLiked = post.likes.get(userId);
 
+    //  deleting and updating in the map of likes
     if (isLiked) {
       post.likes.delete(userId);
     } else {
       post.likes.set(userId, true);
     }
 
+    //  updatin the current likes in database by finding the id.
     const updatedPost = await Post.findByIdAndUpdate(
       id,
       { likes: post.likes },
@@ -71,3 +75,84 @@ export const likePost = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+
+// Get posts
+export const getcommentPost = (async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const post = await Post.findById(id);
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+    // console.log(post);
+    const comments = await Promise.all(post.comments.map(async comment => {
+      const user = await User.findById(comment.user);
+      return {
+        id: comment._id,
+        username: user.firstName,
+        userpicture: user.picturePath,
+        text: comment.text,
+
+      };
+    }));
+    res.json(comments);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error from getCommentPost' });
+  }
+});
+
+
+// POST
+export const commentPost = (async (req, res) => {
+
+  try {
+    const { id } = req.params;
+    const { text, userId } = req.body;
+    const post = await Post.findById(id);
+    const users = await User.findById(userId);
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+    if (!users) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    const newComment = {
+      user: userId,
+      username: users.firstName,
+      userpicture: users.picturePath,
+      text: text
+    };
+
+
+    // console.log(newComment);
+    post.comments.unshift(newComment);
+    await post.save();
+
+
+    const comments = await Promise.all(post.comments.map(async comment => {
+      const user = await User.findById(comment.user);
+      return {
+        id: comment._id,
+        user: user.firstName,
+        userpic: user.picturePath,
+        text: comment.text,
+
+      };
+    }));
+
+    res.json(comments);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+
+
+
+
+

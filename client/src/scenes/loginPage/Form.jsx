@@ -105,10 +105,10 @@ const Form = () => {
 
   return (
     <>
-      <Box 
+      <Box
         fontSize="30px"
         fontWeight="500"
-
+        padding='0rem 0rem 1rem 0rem'
       >{isLogin ? "SignIn" : "REGISTER"}
       </Box>
       <Formik
@@ -143,7 +143,7 @@ const Form = () => {
                     onChange={handleChange}
                     value={values.firstName}
                     name="firstName"
-                    
+
                     error={
                       Boolean(touched.firstName) && Boolean(errors.firstName)
                     }
@@ -151,10 +151,10 @@ const Form = () => {
                     InputLabelProps={{
                       sx: {
                         color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
-                        
+
                       },
                     }}
-                    sx={{ gridColumn: "span 2", backgroundColor:'rgba(0,0,0,0.8)'}}
+                    sx={{ gridColumn: "span 2", backgroundColor: 'rgba(0,0,0,0.8)' }}
                   />
                   <TextField
                     label="Last Name"
@@ -167,13 +167,14 @@ const Form = () => {
                     InputLabelProps={{
                       sx: {
                         color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
-                        
+
                       },
                     }}
-                    sx={{ gridColumn: "span 2" ,
-                          
-                          backgroundColor:'rgba(0,0,0,0.8)'
-                       }}
+                    sx={{
+                      gridColumn: "span 2",
+
+                      backgroundColor: 'rgba(0,0,0,0.8)'
+                    }}
                   />
                   <TextField
                     label="Location"
@@ -183,7 +184,7 @@ const Form = () => {
                     name="location"
                     error={Boolean(touched.location) && Boolean(errors.location)}
                     helperText={touched.location && errors.location}
-                    sx={{ gridColumn: "span 4",backgroundColor:'rgba(0,0,0,0.8)' }}
+                    sx={{ gridColumn: "span 4", backgroundColor: 'rgba(0,0,0,0.8)' }}
                     InputLabelProps={{
                       sx: {
                         color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
@@ -200,7 +201,7 @@ const Form = () => {
                       Boolean(touched.occupation) && Boolean(errors.occupation)
                     }
                     helperText={touched.occupation && errors.occupation}
-                    sx={{ gridColumn: "span 4", backgroundColor:'rgba(0,0,0,0.8)' }}
+                    sx={{ gridColumn: "span 4", backgroundColor: 'rgba(0,0,0,0.8)' }}
                     InputLabelProps={{
                       sx: {
                         color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
@@ -229,7 +230,7 @@ const Form = () => {
                         >
                           <input {...getInputProps()} />
                           {!values.picture ? (
-                            <p>Add Picture Here</p>
+                            <Box sx={{color: 'rgba(144, 238, 144, 0.7)'}}> Add Picture Here</Box>
                           ) : (
                             <FlexBetween>
                               <Typography>{values.picture.name}</Typography>
@@ -251,7 +252,7 @@ const Form = () => {
                 name="email"
                 error={Boolean(touched.email) && Boolean(errors.email)}
                 helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 4", backgroundColor:'rgba(0,0,0,0.8)' }}
+                sx={{ gridColumn: "span 4", backgroundColor: 'rgba(0,0,0,0.8)' }}
                 InputLabelProps={{
                   sx: {
                     color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
@@ -267,7 +268,7 @@ const Form = () => {
                 name="password"
                 error={Boolean(touched.password) && Boolean(errors.password)}
                 helperText={touched.password && errors.password}
-                sx={{ gridColumn: "span 4", backgroundColor:'rgba(0,0,0,0.8)' }}
+                sx={{ gridColumn: "span 4", backgroundColor: 'rgba(0,0,0,0.8)' }}
                 InputLabelProps={{
                   sx: {
                     color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
@@ -297,8 +298,10 @@ const Form = () => {
                   setPageType(isLogin ? "register" : "login");
                   resetForm();
                 }}
+                
                 sx={{
-                  textDecoration: "underline",
+                  // textDecoration: "underline",
+                  fontSize:'16px',
                   color: palette.primary.main,
                   "&:hover": {
                     cursor: "pointer",
@@ -307,9 +310,15 @@ const Form = () => {
                 }}
               >
                 {isLogin
-                  ? <Box>Don't have an account? Sign Up here.</Box>
-                  : <Box>Already have an account? Login here.</Box>
-                  }
+                  ? <Box display="flex" gap='30px' >Don't have an account?
+                    <Typography component="span" fontSize='16px'>
+                      Register here
+                    </Typography></Box>
+                  : <Box display='flex' gap='30px'>Already have an account?
+                    <Typography component="span" fontSize='16px' >
+                      SignIn Here
+                    </Typography></Box>
+                }
               </Typography>
             </Box>
           </form>
