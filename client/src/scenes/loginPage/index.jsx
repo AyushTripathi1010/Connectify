@@ -1,13 +1,15 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import Form from "./Form";
-// import BackgroundImage from '../../../public/assets/Home_page_Image.jpg'
+
+const BASE_URL = 'http://localhost:3001';
+
 const LoginPage = () => {
   const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   return (
     <Box sx={{
       position: 'relative', minHeight: '100vh', width: '100%',
-      backgroundImage: 'url("http://localhost:3001/assets/bgImage.jpg")',
+      backgroundImage: `url(${BASE_URL}/assets/bgImage.jpg)`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       width: '100%',

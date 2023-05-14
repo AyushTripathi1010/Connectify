@@ -13,6 +13,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setPost } from "state";
+const BASE_URL = 'http://localhost:3001';
 
 const PostWidget = ({
   postId,
@@ -52,7 +53,7 @@ const PostWidget = ({
     try {
       console.log('fetching');
       const response = await fetch(
-        `http://localhost:3001/posts/${postId}/comment`,
+        `${BASE_URL}/posts/${postId}/comment`,
         {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
@@ -70,7 +71,7 @@ const PostWidget = ({
   };
 
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
+    const response = await fetch(`${BASE_URL}/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -84,7 +85,7 @@ const PostWidget = ({
 
   const handleCommentSubmit = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/posts/${postId}/comment`, {
+      const response = await fetch(`${BASE_URL}/posts/${postId}/comment`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -120,7 +121,7 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`http://localhost:3001/assets/${picturePath}`}
+          src={`${BASE_URL}/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">
@@ -171,7 +172,7 @@ const PostWidget = ({
               <Divider />
               <Typography sx={{ color: main, m: "0.5rem 0", pl: "1rem" }}>
                 <Box display="flex" gap="1rem" padding="1rem">
-                  <img src={`http://localhost:3001/assets/${comment.userpicture}`} alt="user profile picture" style={{ height: '40px', width: '40px', borderRadius: '50%' }} />
+                  <img src={`${BASE_URL}/assets/${comment.userpicture}`} alt="user profile picture" style={{ height: '40px', width: '40px', borderRadius: '50%' }} />
                   <Box>
                     <div style={{ fontSize: '13px', fontWeight: 'bold', color: "gray" }}>{comment.username}</div>
                     <div style={{ fontSize: '15px' }}>{comment.text}</div>
