@@ -4,7 +4,7 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "state";
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://connectify-backend-mjv2.onrender.com';
 const FriendListWidget = ({ userId }) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();

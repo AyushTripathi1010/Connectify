@@ -1,7 +1,7 @@
 import { Typography, useTheme } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://connectify-backend-mjv2.onrender.com';
 const AdvertWidget = () => {
   const { palette } = useTheme();
   const dark = palette.neutral.dark;

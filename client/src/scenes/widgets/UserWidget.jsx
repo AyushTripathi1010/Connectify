@@ -11,7 +11,7 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://connectify-backend-mjv2.onrender.com';
 
 const UserWidget = ({ userId, picturePath }) => {
   const [user, setUser] = useState(null);

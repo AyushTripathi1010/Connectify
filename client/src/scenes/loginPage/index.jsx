@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import Form from "./Form";
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://connectify-backend-mjv2.onrender.com';
 
 const LoginPage = () => {
   const theme = useTheme();

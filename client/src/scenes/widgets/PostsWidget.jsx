@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import PostWidget from "./PostWidget";
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://connectify-backend-mjv2.onrender.com';
 
 const PostsWidget = ({ userId, isProfile = false }) => {
   const dispatch = useDispatch();
