@@ -4,7 +4,7 @@ import {
   FavoriteOutlined,
   ShareOutlined,
 } from "@mui/icons-material";
-import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, Divider, IconButton, InputBase, Typography, useTheme, alpha } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import FlexBetween from "components/FlexBetween";
 import Friend from "components/Friend";
@@ -47,7 +47,7 @@ const PostWidget = ({
 
   }, [showComments, isSendClicked]);
 
-
+     
 
   const fetchComments = async () => {
     try {
@@ -156,9 +156,14 @@ const PostWidget = ({
       {showComments && (
         <Box mt="0.5rem">
           <FlexBetween>
-            <input type="text" value={newComment} onChange={(e) => setNewComment(e.target.value)}
-              style={{
-                width: '90%', outline: 'none', border: 'none', backgroundColor: 'transparent', color: 'white', fontSize: '15px', wordWrap: 'break-word',
+            <InputBase
+             multiline
+            
+            placeholder="Comment your thoughts here..."
+             type="text" value={newComment} onChange={(e) => setNewComment(e.target.value)}
+              sx={{
+                width: '90%', outline: 'none', border: 'none', backgroundColor: alpha(palette.common.white, 0),
+                color:palette.neutral.dark, fontSize: '15px',  overflowWrap: 'break-word',
                 wordBreak: 'break-all'
               }}
             />
@@ -171,7 +176,7 @@ const PostWidget = ({
             <Box key={crypto.randomUUID()}>
               <Divider />
               <Typography sx={{ color: main, m: "0.5rem 0", pl: "1rem" }}>
-                <Box display="flex" gap="1rem" padding="1rem">
+                <Box display="flex" gap="1rem" padding=" 0.5rem 0rem 0.5rem 0rem">
                   <img src={`${BASE_URL}/assets/${comment.userpicture}`} alt="user profile picture" style={{ height: '40px', width: '40px', borderRadius: '50%' }} />
                   <Box>
                     <div style={{ fontSize: '13px', fontWeight: 'bold', color: "gray" }}>{comment.username}</div>

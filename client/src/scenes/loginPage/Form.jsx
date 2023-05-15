@@ -155,6 +155,11 @@ const Form = () => {
                       },
                     }}
                     sx={{ gridColumn: "span 2", backgroundColor: 'rgba(0,0,0,0.8)' }}
+                    InputProps={{
+                      inputProps: {
+                        style: { color: "white" }, // set the text color to white
+                      },
+                    }}
                   />
                   <TextField
                     label="Last Name"
@@ -175,6 +180,11 @@ const Form = () => {
 
                       backgroundColor: 'rgba(0,0,0,0.8)'
                     }}
+                    InputProps={{
+                      inputProps: {
+                        style: { color: "white" }, // set the text color to white
+                      },
+                    }}
                   />
                   <TextField
                     label="Location"
@@ -188,6 +198,11 @@ const Form = () => {
                     InputLabelProps={{
                       sx: {
                         color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
+                      },
+                    }}
+                    InputProps={{
+                      inputProps: {
+                        style: { color: "white" }, // set the text color to white
                       },
                     }}
                   />
@@ -205,6 +220,11 @@ const Form = () => {
                     InputLabelProps={{
                       sx: {
                         color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
+                      },
+                    }}
+                    InputProps={{
+                      inputProps: {
+                        style: { color: "white" }, // set the text color to white
                       },
                     }}
                   />
@@ -230,7 +250,7 @@ const Form = () => {
                         >
                           <input {...getInputProps()} />
                           {!values.picture ? (
-                            <Box sx={{color: 'rgba(144, 238, 144, 0.7)'}}> Add Picture Here</Box>
+                            <Box sx={{ color: 'rgba(144, 238, 144, 0.7)' }}> Add Picture Here</Box>
                           ) : (
                             <FlexBetween>
                               <Typography>{values.picture.name}</Typography>
@@ -258,6 +278,11 @@ const Form = () => {
                     color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
                   },
                 }}
+                InputProps={{
+                  inputProps: {
+                    style: { color: "white" }, // set the text color to white
+                  },
+                }}
               />
               <TextField
                 label="Password"
@@ -274,6 +299,11 @@ const Form = () => {
                     color: 'rgba(144, 238, 144, 0.7)', // set the label color to red
                   },
                 }}
+                InputProps={{
+                  inputProps: {
+                    style: { color: "white" }, // set the text color to white
+                  },
+                }}
               />
             </Box>
 
@@ -284,11 +314,12 @@ const Form = () => {
                 type="submit"
                 sx={{
                   m: "2rem 0",
-                  p: "1rem",
+                  p: "0.7rem",
                   // backgroundColor: palette.primary.main,
-                  backgroundColor: 'rgba(144, 238, 144, 0.8)',
-                  color: palette.background.alt,
-                  "&:hover": { backgroundColor: 'rgb(144, 238, 144)' },
+                  backgroundColor: 'rgb(103, 189, 103)',
+                  color: 'white',
+                  "&:hover": { backgroundColor: 'rgb(94, 169, 94)' },
+                  fontSize: '15px'
                 }}
               >
                 {isLogin ? "LOGIN" : "REGISTER"}
@@ -298,23 +329,23 @@ const Form = () => {
                   setPageType(isLogin ? "register" : "login");
                   resetForm();
                 }}
-                
+
                 sx={{
                   // textDecoration: "underline",
-                  fontSize:'16px',
+                  fontSize: '16px',
                   color: palette.primary.main,
                   "&:hover": {
-                    cursor: "pointer",
-                    color: palette.primary.light,
+                    cursor: "pointer"
+
                   },
                 }}
               >
                 {isLogin
-                  ? <Box display="flex" gap='30px' >Don't have an account?
+                  ? <Box display="flex" gap='10px' >Don't have an account?
                     <Typography component="span" fontSize='16px'>
                       Register here
                     </Typography></Box>
-                  : <Box display='flex' gap='30px'>Already have an account?
+                  : <Box display='flex' gap='10px'>Already have an account?
                     <Typography component="span" fontSize='16px' >
                       SignIn Here
                     </Typography></Box>
